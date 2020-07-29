@@ -98,6 +98,17 @@ async def execute(ctx, *msg):
 	output = ' -- '.join([str(i)+' '+str(round(j, 4)) if type(j)!=str else str(i)+' '+str(j) for i,j in zip(columns, row)])
 	await ctx.send(output)
 
-
+@client.command()
+@commands.has_permissions(manage_messages = True)
+async def clear(ctx, *msg):
+	files = ['test', 'discord_keras.py', '.config','.gitignore', 'README.md', '.git', 'setup.py', 'script_to_model.py', 'data', '__pycache__', 'preprocessing.py']
+	c_files = os.listdir()
+	r_files = [i for i in c_files if i not in files]
+	for f in r_files:
+		try:
+			if f.index('.')!=-1:
+				os.system('rm '+f)
+		except:
+			os.system('rm -r '+f)
 
 client.run(token)
