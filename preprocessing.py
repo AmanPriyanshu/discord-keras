@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import os
 
 def preprocess():
 	data = pd.read_csv('./data/Surgical-deepnet.csv')

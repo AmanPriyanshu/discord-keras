@@ -8,4 +8,4 @@ file = open('.config', 'a')
 file.write(token)
 file.close()
 
-os.system()
+print('Okay Everythin Set-Up, run: `python3 discord_keras.py`')

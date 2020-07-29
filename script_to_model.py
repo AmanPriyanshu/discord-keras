@@ -3,6 +3,7 @@ import numpy as np
 import os
 import pandas as pd
 from contextlib import redirect_stdout
+import sys
 
 model_name = ""
 
@@ -138,4 +139,5 @@ def main_script_to_model(path, name, save_history=False):
 
 if __name__ == "__main__":
 	os.system('clear')
-	main_script_to_model('./test/example_params.txt', 'simple_logistic')
+	name = sys.argv[1]
+	main_script_to_model(name+'.txt', name)
