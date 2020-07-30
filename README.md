@@ -81,4 +81,5 @@ Let's begin by first listing down all available Features:
 
 All pre-processing to be done by the user, including randomly shuffling the data. As of now the split is set as 80:20 will be updated in the future.
 
-## Alpha-tester: Harsh Rathod (https://github.com/thecreator-hr)
+## Alpha-tester: 
+* Harsh Rathod (https://github.com/thecreator-hr)
