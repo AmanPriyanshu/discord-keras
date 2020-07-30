@@ -28,8 +28,10 @@ async def preprocess(ctx):
 name = ""
 
 @client.command()
+@commands.has_permissions(manage_messages = True)
 async def define(ctx, *msg):
 	global name
+	await ctx.send("Defining Model...")
 	msg = list(msg)
 	msg = msg[1:-1]
 	model_def = []
@@ -48,6 +50,7 @@ async def define(ctx, *msg):
 	file = open(name+'.txt', 'w')
 	file.writelines(model_def)
 	file.close()
+	await ctx.send("Model defined.")
 
 @client.command()
 @commands.has_permissions(manage_messages = True)
@@ -79,7 +82,7 @@ async def execute(ctx, *msg):
 			data = data.values
 			row = data[-1]
 			row = [i for i in row]
-			output = ' -- '.join([str(i)+' '+str(round(j, 4)) if type(j)!=str else str(i)+' '+str(j) for i,j in zip(columns, row)])
+			output = ' -- '.join([str(i)+': '+str(round(j, 4)) if type(j)!=str else str(i)+': '+str(j) for i,j in zip(columns, row)])
 			await ctx.send(output)
 		except:
 			continue
@@ -91,11 +94,11 @@ async def execute(ctx, *msg):
 	columns = data.columns
 	data = data.values
 	row = data[0]
-	output = ' -- '.join([str(i)+' '+str(round(j, 4)) if type(j)!=str else str(i)+' '+str(j) for i,j in zip(columns, row)])
+	output = ' -- '.join([str(i)+': '+str(round(j, 4)) if type(j)!=str else str(i)+': '+str(j) for i,j in zip(columns, row)])
 	await ctx.send(output)
 	row = data[1]
 
-	output = ' -- '.join([str(i)+' '+str(round(j, 4)) if type(j)!=str else str(i)+' '+str(j) for i,j in zip(columns, row)])
+	output = ' -- '.join([str(i)+': '+str(round(j, 4)) if type(j)!=str else str(i)+': '+str(j) for i,j in zip(columns, row)])
 	await ctx.send(output)
 
 @client.command()
